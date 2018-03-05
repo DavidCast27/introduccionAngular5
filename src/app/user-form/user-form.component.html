@@ -1,0 +1,34 @@
+<div class="container">
+	<div class="row" >
+		<div class="col-md-10 offset-1">
+			<h1 class="center">{{h1Text}}</h1>
+			<form novalidate (ngSubmit) ="submit()" #userForm="ngForm">
+				<div class="form-group">
+					<label for="username">Name</label>
+					<input type="text" class="form-control" id="username" name="username" [(ngModel)]="user.name" #username="ngModel" required>
+					<div [hidden]="username.valid || username.pristine" style="color:firebrick">
+						El nombre es requerido
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" #email="ngModel" required>
+					<div [hidden]="email.valid || email.pristine" style="color:firebrick">
+						El email es requerido
+					</div>
+				</div>
+				<div class="form-check">
+					<label class="form-check-label">
+						<input type="checkbox" class="form-checkbox-input" id="isActive" name="isActive" [(ngModel)]="user.isActive" #isActive="ngModel" required>
+						Esta activo?
+					</label>
+				</div>
+
+				<button class="btn btn-primary" type="submit" [disabled]="!userForm"> {{submitText}} </button>
+				<a routerLink="/crud" class="btn btn-primary btn-xs"> Volver al listado</a>
+				
+			</form>
+		</div>
+	</div>
+</div>
